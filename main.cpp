@@ -6,6 +6,7 @@
 #include "Sur.h"
 #include "Valeur.h"
 #include "Variable.h"
+#include "Fonction.h"
 
 #include <string>
 
@@ -40,7 +41,12 @@ std::cout << m.Affiche() << " = "<< m.Calcule(t)<< std::endl;
 std::cout << f.Affiche() << " = "<< f.Calcule(t)<< std::endl;
 std::cout << s.Affiche() << " = "<< s.Calcule(t)<< std::endl;
 
+Fonction fo(f.Copy(),2);
+for (int i = 0; i<30;i++){
+  fo.Mute();
+}
 
+std::cout << fo.Affiche() << " = "<< fo.Calcule(t)<< std::endl;
 delete[] t;
 return 0;
 }
