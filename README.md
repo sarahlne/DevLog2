@@ -1,5 +1,5 @@
 # DevLog2
-### Autors
+### Authors
 This project has been made in collaboration with: @Tpocquillon , @abonnalcon , @Dikec and @sarahlne
 
 ### Goals
