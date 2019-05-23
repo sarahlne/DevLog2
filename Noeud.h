@@ -8,7 +8,7 @@ class Noeud{
 public:
 virtual float Calcule(float*) const=0;
 
-virtual std::string Affiche() const;
+virtual std::string Affiche() const =0;
 
 
 virtual void Unasigne() =0;
