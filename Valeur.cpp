@@ -11,7 +11,9 @@ return val_;
 
 /*Affiche() method */
 std::string Valeur::Affiche() const{
-return  std::string(val_);
+std::ostringstream ostr;
+ostr<<val_;
+return  ostr.str();
 }
 
 /* Destructor */

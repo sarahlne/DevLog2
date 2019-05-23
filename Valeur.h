@@ -2,6 +2,7 @@
 #define VALEUR_
 #include"Noeud.h"
 #include <string>
+#include <sstream>
 class Valeur : public Noeud{
 
 public:
