@@ -61,16 +61,16 @@ X1[1]=2.0;
 X1[2]=3.0;
 X1[3]=4.0;
 
-X2[0]=0.1;
-X2[1]=0.2;
-X2[2]=0.2;
-X2[3]=0.1;
+X2[0]=3.0;
+X2[1]=0.5;
+X2[2]=6;
+X2[3]=9.8;
 
 
-X3[0]=10.0;
-X3[1]=10.0;
-X3[2]=10.0;
-X3[3]=10.0;
+X3[0]=1.0;
+X3[1]=7.3;
+X3[2]=5;
+X3[3]=9.0;
 
 X0[0]=1.0;
 X0[1]=1.0;
@@ -84,20 +84,33 @@ X[2]=X2;
 X[3]=X3;
 
 float* Y=new float[4];
-Y[0]=2.0;
-Y[1]=2.0;
-Y[2]=1.1;
-Y[3]=11.0;
+Y[0]=4.0;
+Y[1]=8.0;
+Y[2]=6.3;
+Y[3]=5.4;
 
-Solve S(4,20,X,4,Y,1000);
+Solve S(4,10000,X,4,Y,20);
 
 S.evolve();
-
+std::cout <<"fonction finale "<< std::endl;
 S.affiche_final_fonction();
+
+for(int i=0;i<4;i++){
+  std::cout <<"f(";
+  for(int j=0;j<4;j++){
+    std::cout<<X[i][j]<<"   ";
+  }
+  std::cout <<") = "<<S.CalculeFinalFonction(X[i])<< std::endl;
+  std::cout <<"résultat attendu: "<<Y[i]<< std::endl;
+}
+
 std::cout <<S.getFinalFitness()<< std::endl;
+
+std::cout <<"historique des fitnesses"<< std::endl;
+
 float*H= S.getHistoricFitness();
-for (int i=0; i<100;i++){
-  std::cout <<H[i*10]<< std::endl;
+for (int i=0; i<20;i++){
+  std::cout <<H[i]<< std::endl;
 }
 delete[] X;
 delete[]X1;

@@ -92,14 +92,14 @@ void Solve::PlacementFct(int place ){//Met la meilleure fonction en premier rang
 void Solve::evolve(){
   for(int n=0;n<nbGeneration_;++n){
     int place =0;
-    HistoricFitness_[n] = popFonct_[0]->Fitness(x_,rangex_,y_)/rangex_; //x_ et y_ sont des tableaux de float
+    HistoricFitness_[n] = popFonct_[0]->Fitness(x_,rangex_,y_,0.01)/rangex_; //x_ et y_ sont des tableaux de float, on rajoute ici une pénalité pour les fonction de grande taille.
     
     for(int i=1; i< lambda_;i++){
       popFonct_[i]=new Fonction(*popFonct_[0]);
-      for (int j=1; j< 30;j++){ //nmobre de mutation entre parent et enfant, arbitraire
+      for (int j=1; j< 10;j++){ //nmobre de mutation entre parent et enfant, arbitraire
         popFonct_[i]->Mute();
       }
-      float ffit=popFonct_[i]->Fitness(x_,rangex_,y_)/rangex_; // x_ et y_ sont des tableaux de float
+      float ffit=popFonct_[i]->Fitness(x_,rangex_,y_,0.01)/rangex_; // x_ et y_ sont des tableaux de float
       if(ffit>HistoricFitness_[n]){
         place=i;
         HistoricFitness_[n]=ffit;
@@ -114,6 +114,7 @@ void Solve::evolve(){
       delete popFonct_[i];
       popFonct_[i]=nullptr;
     }
+    HistoricFitness_[n]=best_func->Fitness(x_,rangex_,y_)/rangex_;
     popFonct_[0]=best_func;
   }    
 }

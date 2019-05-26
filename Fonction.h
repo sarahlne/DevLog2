@@ -102,7 +102,14 @@ class Fonction{
 	/* Fitness() method */
   float Fitness(float** ,int range, float *);  
 	/* Calule la Fitness de la fonction en comparant un tableau de résultats obtenu par la fonction à un tableau résultats attendu donné en paramêtre
-	@param Un pointer référent vers un pointer de booléean, un entier, un pointer vers un booléen
+	@param Un pointer référent vers un pointer de float, un entier, un pointer vers un float
+	@return un Float représentant la valeur de la Fitness
+	*/
+
+	/* Fitness() method */
+  float Fitness(float** ,int range, float *, float);  
+	/* Calule la Fitness de la fonction en comparant un tableau de résultats obtenu par la fonction à un tableau résultats attendu donné en paramêtre. On rajoute une pénalité pour les fonction de grandes tailles.
+	@param Un pointer référent vers un pointer de float, un entier, un pointer vers un float, une pénalitée pour la taille de la fonction
 	@return un Float représentant la valeur de la Fitness
 	*/
 	protected:

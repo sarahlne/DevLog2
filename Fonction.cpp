@@ -222,3 +222,12 @@ float Fonction::Fitness(float** in,int range , float * out){
   return Fitness;
 }
 
+// Fitness() method //
+float Fonction::Fitness(float** in,int range , float * out, float lenth_penality){
+  float Fitness=0.0;
+  for(size_t i = 0; i < range; i++){
+       Fitness=Fitness-(Calcule(in[i])-out[i])*(Calcule(in[i])-out[i]);
+  }
+  return Fitness*(1+len_*lenth_penality*range);
+}
+
