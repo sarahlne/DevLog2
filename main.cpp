@@ -7,7 +7,7 @@
 #include "Valeur.h"
 #include "Variable.h"
 #include "Fonction.h"
-
+#include "Solve.h"
 #include <string>
 
 #include <cstdlib>
@@ -48,5 +48,62 @@ for (int i = 0; i<30;i++){
 
 std::cout << fo.Affiche() << " = "<< fo.Calcule(t)<< std::endl;
 delete[] t;
+
+std::cout << "test solveur"<< std::endl;
+
+float * X1=new float[4];
+float* X2=new float[4];
+float* X3=new float[4];
+float* X0=new float[4];
+
+X1[0]=1.0;
+X1[1]=2.0;
+X1[2]=3.0;
+X1[3]=4.0;
+
+X2[0]=0.1;
+X2[1]=0.2;
+X2[2]=0.2;
+X2[3]=0.1;
+
+
+X3[0]=10.0;
+X3[1]=10.0;
+X3[2]=10.0;
+X3[3]=10.0;
+
+X0[0]=1.0;
+X0[1]=1.0;
+X0[2]=1.0;
+X0[3]=1.0;
+
+float** X=new float*[4];
+X[0]=X0;
+X[1]=X1;
+X[2]=X2;
+X[3]=X3;
+
+float* Y=new float[4];
+Y[0]=2.0;
+Y[1]=2.0;
+Y[2]=1.1;
+Y[3]=11.0;
+
+Solve S(4,20,X,4,Y,1000);
+
+S.evolve();
+
+S.affiche_final_fonction();
+std::cout <<S.getFinalFitness()<< std::endl;
+float*H= S.getHistoricFitness();
+for (int i=0; i<100;i++){
+  std::cout <<H[i*10]<< std::endl;
+}
+delete[] X;
+delete[]X1;
+delete[]X2;
+delete[]X3;
+delete[]X0;
+delete[] Y;
 return 0;
 }
