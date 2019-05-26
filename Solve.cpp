@@ -123,7 +123,6 @@ void Solve::affiche_final_fonction()const{
 	std::cout<<popFonct_[0]->Affiche()<<std::endl;
 }
 float* Solve::getHistoricFitness() const{
-   
    return HistoricFitness_;
 }
 float Solve::getFinalFitness() const{

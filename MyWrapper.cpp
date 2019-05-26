@@ -51,8 +51,8 @@ static PyObject* EvolveSolve(PyObject* self, PyObject* args){
 //Get Final Fitness of Object Solve
 static PyObject* GetFitness(PyObject* self, PyObject* args){
 		Solve*  my_Solve = SolvePythonToC(args);
-    int fitness=my_Solve->getFinalFitness();
-  	return Py_BuildValue("i",fitness);
+    float fitness=my_Solve->getFinalFitness();
+  	return Py_BuildValue("f",fitness);
 }
 
 //Calcul Final Fonction of Object Solve
@@ -88,10 +88,10 @@ static PyObject* GetHistoric(PyObject* self, PyObject* args){
 	int size = PyList_Size((PyObject*) list);
   for (int j = 0; j < size; j++){
     // get the j-th element of the python list and convert it to long
-		float listItem = (float) PyLong_AsLong(PyList_GetItem( (PyObject*) list , (Py_ssize_t) j));// check PyFloat_AsDouble for doubles
+		float listItem = (float) PyFloat_AsDouble(PyList_GetItem( (PyObject*) list , (Py_ssize_t) j));// check PyFloat_AsDouble for doubles
 		listItem=historic[j];
 		// Set the python list element to the new value
-		PyList_SetItem((PyObject *) list, (Py_ssize_t) j, PyLong_FromLong((double) listItem) ); // check PyFloat_FromDouble for floats
+		PyList_SetItem((PyObject *) list, (Py_ssize_t) j, PyFloat_FromDouble((double) listItem) ); // check PyFloat_FromDouble for floats
     
   }
 	return Py_BuildValue("O",list);
@@ -141,8 +141,8 @@ static PyMethodDef module_funcs[] = {
 
 static struct PyModuleDef moduledef = {
         PyModuleDef_HEAD_INIT,
-        "BinSymReg",
-        "BinSymReg is a library for Binary symbolic Regression",
+        "NumSymReg",
+        "NumSymReg is a library for Binary symbolic Regression",
         //taille du module
         sizeof(PyObject*),
         //toutes les focntions: 
@@ -153,7 +153,7 @@ static struct PyModuleDef moduledef = {
         NULL
 };
 
-PyMODINIT_FUNC PyInit_BinSymReg(void){
+PyMODINIT_FUNC PyInit_NumSymReg(void){
     PyObject* module = PyModule_Create(&moduledef);
 		return module;
 }
