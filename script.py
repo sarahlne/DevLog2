@@ -11,7 +11,7 @@ nsr.print_fonct(S1)
 nsr.evolve(S1)
 nsr.print_fonct(S1)
 print(nsr.get_fitness(S1))
-test= [2,6]
+test= [2,6,8]
 print(nsr.calcul(S1,test))
 histfit=[0 for i in range(gene)]
 print(nsr.get_historic(S1,histfit))
